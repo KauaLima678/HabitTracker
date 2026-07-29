@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,11 +14,8 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function authenticate(Request $request){
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
+    public function authenticate(LoginRequest $request){
+        $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
@@ -27,7 +26,7 @@ class AuthController extends Controller
             'email' => 'Credenciais Inválidas',
         ]); 
     }
-
+    
     public function logout (Request $request) : RedirectResponse{
         Auth::logout();
 
