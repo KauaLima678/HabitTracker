@@ -1,3 +1,9 @@
+<style>
+    .button{
+        box-shadow: 5px 7px 0 0 black;
+    }
+</style>
+
 <x-layout>
     <main class="py-10">
     <section class="bg-white max-w-[600px] px-10 py-8 border-2 mx-auto mt-4">
@@ -5,7 +11,7 @@
         Faça Login
     </h1>
     <p>Insira seus dados para acessar</p>
-        <form action="/login" method="POST" class="flex flex-col gap-2 py-5">
+        <form action="{{ route('auth.login') }}" method="POST" class="flex flex-col gap-2 py-5">
             @csrf
             <div class="flex flex-col gap-2 mb-4">
                 <label for="email">Email</label>
@@ -27,9 +33,10 @@
                 </p>
                 @enderror
             </div>
-            <button type="submit" class="border-2 bg-white p-2">Entrar</button>
+            <button type="submit" class="border-2 bg-[#fa6334] p-2 button hover:opacity-90 hover:scale-99 transition">Entrar</button>
         </form>
+        <p class="text-center mt-4">Ainda não tem conta? <a href="{{ route('site.register') }}" class="underline hover:opacity-50 transition">Registre-se</a></p>
     </section>
-    <a href="/register" class="text-underline text-blue-600">Cadastre-se</a>
+    
     </main>
 </x-layout>

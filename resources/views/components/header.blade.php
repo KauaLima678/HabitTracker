@@ -1,4 +1,4 @@
-<header class="bg-white border-b-2 flex justify-between p-4">
+<header class="bg-white border-b-2 flex justify-between items-center px-10 py-4">
     <div>
         Logo
     </div>
@@ -16,6 +16,6 @@
     @endauth
 
     @guest
-        <a href="{{ route('auth.login') }}" class="bg-white p-2 border-2">Login</a>
+        <a href="{{ route('auth.login') }}" class="bg-[#fa6334] px-5 py-1 text-white border-2 border-black">Login</a>
     @endguest
 </header>
